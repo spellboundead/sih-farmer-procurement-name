@@ -1,0 +1,5976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KrishiSetu | Smart Farmer Procurement</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+}
+
+:root{
+    --green:#16834a;
+    --green-dark:#0d5d35;
+    --green-deep:#103d28;
+    --green-light:#eaf7ef;
+    --green-soft:#f5fbf7;
+
+    --text:#18261f;
+    --muted:#718078;
+
+    --bg:#f4f7f5;
+    --white:#ffffff;
+
+    --border:#dfe8e2;
+
+    --yellow:#e5a928;
+    --blue:#377fc6;
+    --red:#d45757;
+
+    --shadow:0 8px 25px rgba(16,61,40,.07);
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+.login-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+
+    background:
+        radial-gradient(circle at 10% 10%,#e4f5e9 0,transparent 30%),
+        radial-gradient(circle at 90% 90%,#eaf7ef 0,transparent 30%),
+        #f4f8f5;
+}
+
+.login-box{
+    width:460px;
+    max-width:100%;
+
+    background:white;
+
+    padding:34px;
+
+    border-radius:24px;
+
+    border:1px solid #e1ebe4;
+
+    box-shadow:
+        0 25px 70px rgba(16,61,40,.12);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:26px;
+}
+
+.logo-icon{
+    width:52px;
+    height:52px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--green-light);
+
+    border-radius:15px;
+
+    font-size:26px;
+}
+
+.logo h1{
+    color:var(--green);
+    font-size:26px;
+}
+
+.logo small{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.login-box h2{
+    font-size:23px;
+    margin-bottom:5px;
+}
+
+.subtitle{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+
+/* ROLE */
+
+.role-tabs{
+    display:flex;
+    gap:5px;
+
+    padding:5px;
+
+    background:#f0f4f1;
+
+    border-radius:11px;
+
+    margin-bottom:20px;
+}
+
+.role-tabs button{
+    flex:1;
+
+    padding:10px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:transparent;
+
+    color:#65736b;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    font-size:12px;
+}
+
+.role-tabs button.active{
+    background:white;
+
+    color:var(--green);
+
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
+
+
+/* FORM */
+
+.form-group{
+    margin-bottom:14px;
+}
+
+.form-group label{
+    display:block;
+
+    margin-bottom:6px;
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+input,
+select{
+    width:100%;
+
+    padding:12px 13px;
+
+    border:1px solid #d6e2da;
+
+    border-radius:10px;
+
+    background:white;
+
+    outline:none;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+input:focus,
+select:focus{
+    border-color:var(--green);
+
+    box-shadow:0 0 0 3px rgba(22,131,74,.08);
+}
+
+.primary-btn{
+    width:100%;
+
+    padding:13px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:var(--green);
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.primary-btn:hover{
+    background:var(--green-dark);
+
+    transform:translateY(-1px);
+}
+
+.secondary-btn{
+    width:100%;
+
+    padding:11px;
+
+    margin-top:9px;
+
+    border:1px solid #d6e6db;
+
+    border-radius:10px;
+
+    background:var(--green-soft);
+
+    color:var(--green);
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.login-note{
+    margin-top:13px;
+
+    text-align:center;
+
+    color:#8a948e;
+
+    font-size:10px;
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+.app{
+    display:none;
+
+    min-height:100vh;
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:245px;
+
+    background:var(--green-deep);
+
+    color:white;
+
+    padding:18px 14px;
+
+    overflow-y:auto;
+
+    z-index:100;
+}
+
+.sidebar-logo{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:8px;
+
+    margin-bottom:25px;
+}
+
+.sidebar-logo .icon{
+    font-size:25px;
+}
+
+.sidebar-logo h2{
+    font-size:19px;
+}
+
+.sidebar-logo small{
+    color:#a8cdb6;
+
+    font-size:10px;
+}
+
+.menu-title{
+    color:#83a993;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.2px;
+
+    margin:18px 10px 7px;
+}
+
+.menu button{
+    width:100%;
+
+    border:0;
+
+    background:transparent;
+
+    color:#d7e8dd;
+
+    padding:11px;
+
+    border-radius:9px;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    margin-bottom:2px;
+
+    font-size:12px;
+
+    transition:.2s;
+}
+
+.menu button:hover,
+.menu button.active{
+    background:#1c6541;
+
+    color:white;
+}
+
+.logout{
+    color:#ffbebe !important;
+
+    margin-top:20px;
+}
+
+
+/* MAIN */
+
+.main{
+    margin-left:245px;
+
+    padding:25px;
+}
+
+.topbar{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:22px;
+}
+
+.topbar h1{
+    font-size:23px;
+}
+
+.topbar p{
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:4px;
+}
+
+.user-chip{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:7px 12px 7px 7px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:30px;
+
+    box-shadow:var(--shadow);
+}
+
+.avatar{
+    width:32px;
+    height:32px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:var(--green-light);
+
+    color:var(--green);
+
+    font-weight:800;
+}
+
+
+/* =====================================================
+   PAGES
+===================================================== */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+
+/* WELCOME */
+
+.welcome{
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(120deg,#126b3b,#16834a);
+
+    color:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 10px 30px rgba(22,131,74,.15);
+}
+
+.welcome:after{
+    content:"🌾";
+
+    position:absolute;
+
+    right:35px;
+
+    bottom:-18px;
+
+    font-size:100px;
+
+    opacity:.08;
+}
+
+.welcome h2{
+    font-size:21px;
+
+    margin-bottom:6px;
+}
+
+.welcome p{
+    font-size:12px;
+
+    opacity:.9;
+}
+
+
+/* STATS */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:14px;
+
+    margin-bottom:18px;
+}
+
+.stat{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    padding:17px;
+
+    box-shadow:var(--shadow);
+
+    transition:.2s;
+}
+
+.stat:hover{
+    transform:translateY(-2px);
+}
+
+.stat-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:#607067;
+
+    font-size:11px;
+}
+
+.stat-icon{
+    width:35px;
+    height:35px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:var(--green-light);
+
+    border-radius:9px;
+
+    color:var(--green);
+}
+
+.stat h3{
+    font-size:21px;
+
+    margin-top:12px;
+}
+
+.stat p{
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:3px;
+}
+
+
+/* CARD */
+
+.card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    padding:19px;
+
+    margin-bottom:18px;
+
+    box-shadow:var(--shadow);
+}
+
+.card-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+}
+
+.card-header h3{
+    font-size:16px;
+}
+
+.card-header p{
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:3px;
+}
+
+.grid-2{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:17px;
+}
+
+
+/* =====================================================
+   TRACKING
+===================================================== */
+
+.tracking-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:20px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:18px;
+}
+
+.tracking-head{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:22px;
+}
+
+.tracking-head h3{
+    font-size:17px;
+}
+
+.tracking-head p{
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:4px;
+}
+
+.tracking-id{
+    background:var(--green-light);
+
+    color:var(--green);
+
+    padding:7px 10px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+
+/* TIMELINE */
+
+.timeline{
+    display:flex;
+
+    align-items:flex-start;
+
+    position:relative;
+
+    justify-content:space-between;
+}
+
+.timeline:before{
+    content:"";
+
+    position:absolute;
+
+    top:19px;
+
+    left:7%;
+
+    right:7%;
+
+    height:3px;
+
+    background:#e3ebe6;
+
+    z-index:0;
+}
+
+.timeline-progress{
+    position:absolute;
+
+    top:19px;
+
+    left:7%;
+
+    width:78%;
+
+    height:3px;
+
+    background:var(--green);
+
+    z-index:1;
+}
+
+.step{
+    position:relative;
+
+    z-index:2;
+
+    width:15%;
+
+    text-align:center;
+}
+
+.step-circle{
+    width:38px;
+    height:38px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#e8eeea;
+
+    color:#839087;
+
+    border:4px solid white;
+
+    box-shadow:0 0 0 1px #d9e4dc;
+
+    font-size:14px;
+
+    font-weight:700;
+}
+
+.step.completed .step-circle{
+    background:var(--green);
+
+    color:white;
+
+    box-shadow:0 0 0 1px var(--green);
+}
+
+.step.current .step-circle{
+    background:white;
+
+    color:var(--green);
+
+    box-shadow:
+        0 0 0 3px #cdebd9,
+        0 0 0 5px white;
+}
+
+.step-label{
+    font-size:10px;
+
+    font-weight:700;
+
+    margin-top:9px;
+
+    color:#68766e;
+}
+
+.step.completed .step-label,
+.step.current .step-label{
+    color:var(--green);
+}
+
+.step-date{
+    font-size:9px;
+
+    color:#929c96;
+
+    margin-top:4px;
+}
+
+
+/* CURRENT STATUS */
+
+.current-status{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#f5faf7;
+
+    border:1px solid #dceae1;
+
+    padding:13px;
+
+    border-radius:11px;
+
+    margin-top:23px;
+}
+
+.pulse{
+    width:10px;
+    height:10px;
+
+    background:var(--green);
+
+    border-radius:50%;
+
+    box-shadow:0 0 0 6px #dff2e6;
+}
+
+.current-status strong{
+    font-size:12px;
+}
+
+.current-status span{
+    display:block;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:2px;
+}
+
+
+/* TRACKING INFO */
+
+.track-info{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
+
+    margin-top:15px;
+}
+
+.track-info-box{
+    padding:13px;
+
+    background:#fafcfb;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+}
+
+.track-info-box span{
+    display:block;
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-bottom:5px;
+}
+
+.track-info-box strong{
+    font-size:12px;
+}
+
+
+/* =====================================================
+   MSP
+===================================================== */
+
+.msp-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:11px;
+}
+
+.msp-card{
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:15px;
+
+    background:#f9fcfa;
+}
+
+.msp-card .crop{
+    font-size:12px;
+
+    color:#536158;
+}
+
+.msp-card strong{
+    display:block;
+
+    color:var(--green);
+
+    font-size:18px;
+
+    margin:5px 0 2px;
+}
+
+.msp-card small{
+    color:#89948d;
+
+    font-size:9px;
+}
+
+.condition{
+    background:#fff9e9;
+
+    border:1px solid #f1e3b9;
+
+    color:#735c1b;
+
+    padding:10px 12px;
+
+    border-radius:9px;
+
+    font-size:10px;
+
+    line-height:1.5;
+
+    margin-top:14px;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status{
+    display:inline-block;
+
+    padding:5px 9px;
+
+    border-radius:15px;
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+.green{
+    background:#e5f6eb;
+
+    color:#16834a;
+}
+
+.orange{
+    background:#fff2dc;
+
+    color:#b97813;
+}
+
+.blue{
+    background:#e8f1fb;
+
+    color:#347bc5;
+}
+
+.red{
+    background:#ffe8e8;
+
+    color:#cf4d4d;
+}
+
+
+/* TABLE */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+
+    border-collapse:collapse;
+}
+
+th,
+td{
+    padding:12px;
+
+    border-bottom:1px solid #edf1ee;
+
+    text-align:left;
+
+    white-space:nowrap;
+
+    font-size:11px;
+}
+
+th{
+    color:#6b7870;
+
+    font-size:10px;
+}
+
+.action-btn{
+    padding:7px 11px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:var(--green-light);
+
+    color:var(--green);
+
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.action-btn:hover{
+    background:#dcefe2;
+}
+
+
+/* =====================================================
+   CALCULATOR
+===================================================== */
+
+.calc-box{
+    background:#f7fbf8;
+
+    border:1px solid #dce9df;
+
+    border-radius:13px;
+
+    padding:19px;
+}
+
+.calculation{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-left:4px solid var(--green);
+
+    padding:17px;
+
+    border-radius:10px;
+
+    margin-top:14px;
+}
+
+.calculation h4{
+    color:#68756e;
+
+    font-size:11px;
+}
+
+.equation{
+    margin-top:8px;
+
+    font-size:14px;
+}
+
+.amount{
+    font-size:27px;
+
+    color:var(--green);
+
+    font-weight:800;
+
+    margin-top:5px;
+}
+
+
+/* =====================================================
+   CENTERS
+===================================================== */
+
+.center-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+}
+
+.center-card{
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    background:white;
+}
+
+.center-card h3{
+    font-size:14px;
+}
+
+.center-meta{
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:11px;
+
+    margin:10px 0;
+}
+
+
+/* =====================================================
+   PAYMENTS
+===================================================== */
+
+.payment-main{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+}
+
+.amount-box{
+    background:var(--green-light);
+
+    padding:19px;
+
+    border-radius:13px;
+}
+
+.amount-box small{
+    color:#627168;
+
+    font-size:10px;
+}
+
+.amount-box h2{
+    color:var(--green);
+
+    margin:5px 0 9px;
+
+    font-size:27px;
+}
+
+.bank-box{
+    background:#fafcfa;
+
+    border:1px solid var(--border);
+
+    border-radius:13px;
+
+    padding:19px;
+}
+
+.bank-box h3{
+    font-size:14px;
+
+    margin-bottom:14px;
+}
+
+.bank-number{
+    font-size:19px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    margin:8px 0;
+}
+
+
+/* BANK FORM */
+
+.bank-form{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin-top:16px;
+
+    padding-top:16px;
+
+    border-top:1px solid var(--border);
+}
+
+.bank-form .full{
+    grid-column:1 / -1;
+}
+
+
+/* =====================================================
+   RECEIPT
+===================================================== */
+
+.receipt{
+    max-width:650px;
+
+    border:1px dashed #b7c8bd;
+
+    border-radius:13px;
+
+    padding:22px;
+}
+
+.receipt-head{
+    text-align:center;
+
+    padding-bottom:15px;
+
+    border-bottom:1px solid var(--border);
+
+    margin-bottom:10px;
+}
+
+.receipt-head h2{
+    color:var(--green);
+}
+
+.receipt-head p{
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.receipt-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:9px 0;
+
+    border-bottom:1px solid #eef2ef;
+
+    font-size:11px;
+}
+
+
+/* =====================================================
+   CENTER CARDS
+===================================================== */
+
+.center-dashboard-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:14px;
+}
+
+.mini-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:17px;
+
+    box-shadow:var(--shadow);
+}
+
+.mini-card span{
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+.mini-card h2{
+    color:var(--green);
+
+    margin-top:8px;
+
+    font-size:23px;
+}
+
+
+/* =====================================================
+   CHATBOT
+===================================================== */
+
+.chatbot-button{
+    position:fixed;
+
+    right:23px;
+
+    bottom:22px;
+
+    width:54px;
+    height:54px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    color:white;
+
+    font-size:21px;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
+
+    z-index:1000;
+
+    transition:.2s;
+}
+
+.chatbot-button:hover{
+    transform:scale(1.06);
+}
+
+.chatbot-window{
+    position:fixed;
+
+    right:23px;
+
+    bottom:87px;
+
+    width:335px;
+
+    max-width:calc(100vw - 30px);
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.16);
+
+    overflow:hidden;
+
+    display:none;
+
+    z-index:1000;
+}
+
+.chatbot-header{
+    background:var(--green);
+
+    color:white;
+
+    padding:13px 15px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.bot-info{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+}
+
+.bot-avatar{
+    width:34px;
+    height:34px;
+
+    background:white;
+
+    color:var(--green);
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.bot-info strong{
+    font-size:12px;
+}
+
+.bot-info small{
+    display:block;
+
+    font-size:9px;
+
+    opacity:.85;
+}
+
+.close-chat{
+    border:0;
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+.chat-language{
+    padding:8px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.chat-language select{
+    padding:8px;
+
+    font-size:10px;
+}
+
+.chat-messages{
+    height:230px;
+
+    overflow-y:auto;
+
+    padding:12px;
+
+    background:#f7faf8;
+}
+
+.chat-message{
+    max-width:84%;
+
+    padding:9px 11px;
+
+    border-radius:11px;
+
+    margin-bottom:8px;
+
+    font-size:10px;
+
+    line-height:1.5;
+}
+
+.bot-message{
+    background:white;
+
+    border:1px solid var(--border);
+}
+
+.user-message{
+    background:#e1f3e7;
+
+    margin-left:auto;
+}
+
+.chat-input{
+    display:flex;
+
+    gap:5px;
+
+    padding:8px;
+
+    border-top:1px solid var(--border);
+}
+
+.chat-input input{
+    padding:9px;
+
+    font-size:10px;
+}
+
+.chat-send{
+    width:38px;
+
+    border:0;
+
+    background:var(--green);
+
+    color:white;
+
+    border-radius:8px;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1050px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .msp-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .track-info{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .grid-2,
+    .payment-main,
+    .center-grid{
+        grid-template-columns:1fr;
+    }
+
+    .timeline{
+        overflow-x:auto;
+
+        padding-bottom:10px;
+    }
+
+    .step{
+        min-width:100px;
+    }
+
+    .timeline:before,
+    .timeline-progress{
+        display:none;
+    }
+
+    .center-dashboard-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .login-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats,
+    .msp-grid{
+        grid-template-columns:1fr;
+    }
+
+    .track-info,
+    .bank-form{
+        grid-template-columns:1fr;
+    }
+
+    .bank-form .full{
+        grid-column:auto;
+    }
+
+    .main{
+        padding:14px;
+    }
+
+    .topbar h1{
+        font-size:19px;
+    }
+
+    .chatbot-window{
+        right:15px;
+
+        bottom:82px;
+    }
+
+    .chatbot-button{
+        right:15px;
+
+        bottom:17px;
+    }
+}
+
+
+/* PRINT */
+
+@media print{
+
+    .sidebar,
+    .topbar,
+    .chatbot-button,
+    .chatbot-window{
+        display:none !important;
+    }
+
+    .main{
+        margin:0;
+    }
+
+    body{
+        background:white;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<div class="login-page" id="loginPage">
+
+<div class="login-box">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🌱
+        </div>
+
+        <div>
+            <h1>KrishiSetu</h1>
+
+            <small>
+                Smart Farmer Procurement
+            </small>
+        </div>
+
+    </div>
+
+
+    <h2>Welcome Back</h2>
+
+    <p class="subtitle">
+        Securely access your procurement dashboard.
+    </p>
+
+
+    <div class="role-tabs">
+
+        <button
+            class="active"
+            onclick="selectRole('farmer',this)">
+            👨‍🌾 Farmer
+        </button>
+
+        <button
+            onclick="selectRole('center',this)">
+            🏢 Center
+        </button>
+
+        <button
+            onclick="selectRole('admin',this)">
+            🛡️ Admin
+        </button>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+            Mobile Number
+        </label>
+
+        <input
+            id="mobile"
+            type="tel"
+            placeholder="Enter mobile number">
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+            Password / PIN
+        </label>
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Enter password or PIN">
+
+    </div>
+
+
+    <!-- ONLY AADHAAR ON LOGIN -->
+
+    <div
+        id="farmerLoginDetails">
+
+        <div class="form-group">
+
+            <label>
+                Aadhaar Number
+            </label>
+
+            <input
+                id="aadhaar"
+                maxlength="12"
+                type="text"
+                placeholder="Enter 12-digit Aadhaar number">
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="primary-btn"
+        onclick="login()">
+
+        Login to KrishiSetu
+
+    </button>
+
+
+    <button
+        class="secondary-btn"
+        onclick="faceLogin()">
+
+        🔐 Verify with Face ID
+
+    </button>
+
+
+    <p class="login-note">
+
+        Demo prototype — identity verification is simulated.
+
+    </p>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     APPLICATION
+===================================================== -->
+
+<div class="app" id="app">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+
+    <div class="sidebar-logo">
+
+        <div class="icon">
+            🌱
+        </div>
+
+        <div>
+
+            <h2>
+                KrishiSetu
+            </h2>
+
+            <small>
+                Farmer Procurement
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- FARMER -->
+
+    <div id="farmerMenu">
+
+        <div class="menu-title">
+            Farmer
+        </div>
+
+        <div class="menu">
+
+            <button
+                class="active"
+                onclick="showPage('farmerDashboard',this)">
+                🏠 Dashboard
+            </button>
+
+            <button
+                onclick="showPage('registerCrop',this)">
+                🌾 Register Crop
+            </button>
+
+            <button
+                onclick="showPage('cropTracking',this)">
+                📍 Track My Crop
+            </button>
+
+            <button
+                onclick="showPage('centers',this)">
+                🏢 Procurement Centers
+            </button>
+
+            <button
+                onclick="showPage('calculator',this)">
+                🧮 MSP Calculator
+            </button>
+
+            <button
+                onclick="showPage('payments',this)">
+                💳 My Payments
+            </button>
+
+            <button
+                onclick="showPage('receipt',this)">
+                🧾 Digital Receipt
+            </button>
+
+            <button
+                onclick="showPage('notifications',this)">
+                🔔 Notifications
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CENTER -->
+
+    <div
+        id="centerMenu"
+        style="display:none">
+
+        <div class="menu-title">
+            Procurement Center
+        </div>
+
+        <div class="menu">
+
+            <button
+                class="active"
+                onclick="showPage('centerDashboard',this)">
+                🏠 Dashboard
+            </button>
+
+            <button
+                onclick="showPage('requests',this)">
+                📋 Farmer Requests
+            </button>
+
+            <button
+                onclick="showPage('verification',this)">
+                ⚖️ Verification
+            </button>
+
+            <button
+                onclick="showPage('centerPayments',this)">
+                💳 Payments
+            </button>
+
+            <button
+                onclick="showPage('reports',this)">
+                📊 Reports
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN -->
+
+    <div
+        id="adminMenu"
+        style="display:none">
+
+        <div class="menu-title">
+            Administration
+        </div>
+
+        <div class="menu">
+
+            <button
+                class="active"
+                onclick="showPage('adminDashboard',this)">
+                🏠 Dashboard
+            </button>
+
+            <button
+                onclick="showPage('farmers',this)">
+                👨‍🌾 Farmers
+            </button>
+
+            <button
+                onclick="showPage('adminCenters',this)">
+                🏢 Centers
+            </button>
+
+            <button
+                onclick="showPage('adminPayments',this)">
+                💳 Payments
+            </button>
+
+            <button
+                onclick="showPage('complaints',this)">
+                ⚠️ Complaints
+            </button>
+
+            <button
+                onclick="showPage('adminReports',this)">
+                📊 Reports
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="menu">
+
+        <button
+            class="logout"
+            onclick="logout()">
+
+            🚪 Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+
+<div class="topbar">
+
+    <div>
+
+        <h1 id="pageTitle">
+            Farmer Dashboard
+        </h1>
+
+        <p>
+            Simple • Transparent • Farmer Friendly
+        </p>
+
+    </div>
+
+
+    <div class="user-chip">
+
+        <div
+            class="avatar"
+            id="avatar">
+            R
+        </div>
+
+        <strong id="userName">
+            Ramesh
+        </strong>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FARMER DASHBOARD
+===================================================== -->
+
+<section
+    class="page active"
+    id="farmerDashboard">
+
+
+<div class="welcome">
+
+    <h2>
+        Namaste, Ramesh 👋
+    </h2>
+
+    <p>
+        Track your crop, procurement, quality verification
+        and payment — all in one place.
+    </p>
+
+</div>
+
+
+<div class="stats">
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <span>
+                Registered Crop
+            </span>
+
+            <div class="stat-icon">
+                🌾
+            </div>
+
+        </div>
+
+        <h3>
+            100 q
+        </h3>
+
+        <p>
+            Paddy
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <span>
+                Current Stage
+            </span>
+
+            <div class="stat-icon">
+                📍
+            </div>
+
+        </div>
+
+        <h3>
+            Quality Check
+        </h3>
+
+        <p>
+            In progress
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <span>
+                Actual Weight
+            </span>
+
+            <div class="stat-icon">
+                ⚖️
+            </div>
+
+        </div>
+
+        <h3>
+            99.8 q
+        </h3>
+
+        <p>
+            Verified
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <span>
+                Payment
+            </span>
+
+            <div class="stat-icon">
+                ₹
+            </div>
+
+        </div>
+
+        <h3>
+            ₹2,36,426
+        </h3>
+
+        <p>
+            Credited
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- QUICK TRACKING -->
+
+<div class="tracking-card">
+
+    <div class="tracking-head">
+
+        <div>
+
+            <h3>
+                📍 Live Crop Tracking
+            </h3>
+
+            <p>
+                Follow your crop from registration to payment.
+            </p>
+
+        </div>
+
+        <span class="tracking-id">
+            KRS-2026-00124
+        </span>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-progress"></div>
+
+
+        <div class="step completed">
+
+            <div class="step-circle">
+                ✓
+            </div>
+
+            <div class="step-label">
+                Registered
+            </div>
+
+            <div class="step-date">
+                01 Sep
+            </div>
+
+        </div>
+
+
+        <div class="step completed">
+
+            <div class="step-circle">
+                ✓
+            </div>
+
+            <div class="step-label">
+                Slot Booked
+            </div>
+
+            <div class="step-date">
+                02 Sep
+            </div>
+
+        </div>
+
+
+        <div class="step completed">
+
+            <div class="step-circle">
+                ✓
+            </div>
+
+            <div class="step-label">
+                At Center
+            </div>
+
+            <div class="step-date">
+                03 Sep
+            </div>
+
+        </div>
+
+
+        <div class="step completed">
+
+            <div class="step-circle">
+                ✓
+            </div>
+
+            <div class="step-label">
+                Weighed
+            </div>
+
+            <div class="step-date">
+                04 Sep
+            </div>
+
+        </div>
+
+
+        <div class="step current">
+
+            <div class="step-circle">
+                ◉
+            </div>
+
+            <div class="step-label">
+                Quality Check
+            </div>
+
+            <div class="step-date">
+                Now
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-circle">
+                6
+            </div>
+
+            <div class="step-label">
+                Procurement
+            </div>
+
+            <div class="step-date">
+                Pending
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-circle">
+                7
+            </div>
+
+            <div class="step-label">
+                Payment
+            </div>
+
+            <div class="step-date">
+                Pending
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="current-status">
+
+        <div class="pulse"></div>
+
+        <div>
+
+            <strong>
+                Current Status: Quality Verification
+            </strong>
+
+            <span>
+                Your crop has been weighed. Quality/grade verification
+                is currently being completed at the procurement center.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="track-info">
+
+        <div class="track-info-box">
+
+            <span>
+                Crop
+            </span>
+
+            <strong>
+                Paddy
+            </strong>
+
+        </div>
+
+
+        <div class="track-info-box">
+
+            <span>
+                Registered Quantity
+            </span>
+
+            <strong>
+                100 q
+            </strong>
+
+        </div>
+
+
+        <div class="track-info-box">
+
+            <span>
+                Current Center
+            </span>
+
+            <strong>
+                District Procurement Center
+            </strong>
+
+        </div>
+
+
+        <div class="track-info-box">
+
+            <span>
+                Expected Next Step
+            </span>
+
+            <strong>
+                Procurement Confirmation
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- MSP -->
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            🌾 Indicative MSP
+        </h3>
+
+        <button
+            class="action-btn"
+            onclick="showPage('calculator')">
+
+            Open Calculator
+
+        </button>
+
+    </div>
+
+
+    <div class="msp-grid">
+
+        <div class="msp-card">
+
+            <span class="crop">
+                Paddy
+            </span>
+
+            <strong>
+                ₹2,369/q
+            </strong>
+
+            <small>
+                Indicative
+            </small>
+
+        </div>
+
+
+        <div class="msp-card">
+
+            <span class="crop">
+                Wheat
+            </span>
+
+            <strong>
+                ₹2,585/q
+            </strong>
+
+            <small>
+                Indicative
+            </small>
+
+        </div>
+
+
+        <div class="msp-card">
+
+            <span class="crop">
+                Cotton
+            </span>
+
+            <strong>
+                ₹7,400/q
+            </strong>
+
+            <small>
+                Indicative
+            </small>
+
+        </div>
+
+
+        <div class="msp-card">
+
+            <span class="crop">
+                Maize
+            </span>
+
+            <strong>
+                ₹2,400/q
+            </strong>
+
+            <small>
+                Indicative
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div class="condition">
+
+        ℹ️ <strong>Note:</strong>
+        Estimated amount may vary depending on prevailing market
+        price, actual quantity/weight, quality/grade and applicable
+        procurement conditions.
+
+    </div>
+
+</div>
+
+
+
+<!-- PROCUREMENT STATUS -->
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            📦 Procurement Summary
+        </h3>
+
+        <span class="status green">
+            In Progress
+        </span>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+    <table>
+
+        <tr>
+
+            <th>
+                Crop
+            </th>
+
+            <th>
+                Registered
+            </th>
+
+            <th>
+                Actual Weight
+            </th>
+
+            <th>
+                Quality
+            </th>
+
+            <th>
+                Procurement ID
+            </th>
+
+            <th>
+                Status
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                <strong>Paddy</strong>
+            </td>
+
+            <td>
+                100 q
+            </td>
+
+            <td>
+                99.8 q
+            </td>
+
+            <td>
+                Verification
+            </td>
+
+            <td>
+                KRS-2026-00124
+            </td>
+
+            <td>
+
+                <span class="status orange">
+                    Processing
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REGISTER CROP
+===================================================== -->
+
+<section
+    class="page"
+    id="registerCrop">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>
+                🌾 Register Crop
+            </h3>
+
+            <p>
+                Register your crop before sending it to a procurement center.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="grid-2">
+
+        <div class="form-group">
+
+            <label>
+                Farmer Name
+            </label>
+
+            <input
+                value="Ramesh">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Crop Type
+            </label>
+
+            <select id="registerCropType">
+
+                <option>
+                    Paddy
+                </option>
+
+                <option>
+                    Wheat
+                </option>
+
+                <option>
+                    Cotton
+                </option>
+
+                <option>
+                    Maize
+                </option>
+
+                <option>
+                    Red Gram
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Quantity (Quintals)
+            </label>
+
+            <input
+                id="registerQty"
+                type="number"
+                value="100">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Location
+            </label>
+
+            <input
+                value="Telangana">
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="primary-btn"
+        onclick="registerCrop()">
+
+        Register Crop
+
+    </button>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRACKING PAGE
+===================================================== -->
+
+<section
+    class="page"
+    id="cropTracking">
+
+
+<div class="tracking-card">
+
+    <div class="tracking-head">
+
+        <div>
+
+            <h3>
+                📍 Track My Crop
+            </h3>
+
+            <p>
+                Real-time procurement journey and status.
+            </p>
+
+        </div>
+
+        <span class="tracking-id">
+            KRS-2026-00124
+        </span>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-progress"></div>
+
+
+        <div class="step completed">
+
+            <div class="step-circle">
+                ✓
+            </div>
+
+            <div class="step-label">
+                Registered
+            </div>
+
+            <div class="step-date">
+                01 Sep 2026
+            </div>
+
+        </div>
+
+
+        <div class="step completed">
+
+            <div class="step-circle">
+                ✓
+            </div>
+
+            <div class="step-label">
+                Slot Booked
+            </div>
+
+            <div class="step-date">
+                02 Sep 2026
+            </div>
+
+        </div>
+
+
+        <div class="step completed">
+
+            <div class="step-circle">
+                ✓
+            </div>
+
+            <div class="step-label">
+                At Center
+            </div>
+
+            <div class="step-date">
+                03 Sep 2026
+            </div>
+
+        </div>
+
+
+        <div class="step completed">
+
+            <div class="step-circle">
+                ✓
+            </div>
+
+            <div class="step-label">
+                Weighed
+            </div>
+
+            <div class="step-date">
+                04 Sep 2026
+            </div>
+
+        </div>
+
+
+        <div class="step current">
+
+            <div class="step-circle">
+                ◉
+            </div>
+
+            <div class="step-label">
+                Quality Check
+            </div>
+
+            <div class="step-date">
+                Current
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-circle">
+                6
+            </div>
+
+            <div class="step-label">
+                Procurement
+            </div>
+
+            <div class="step-date">
+                Pending
+            </div>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-circle">
+                7
+            </div>
+
+            <div class="step-label">
+                Payment
+            </div>
+
+            <div class="step-date">
+                Pending
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="current-status">
+
+        <div class="pulse"></div>
+
+        <div>
+
+            <strong>
+                Quality Verification in Progress
+            </strong>
+
+            <span>
+                The procurement center is checking crop quality and grade.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="track-info">
+
+        <div class="track-info-box">
+
+            <span>
+                Farmer
+            </span>
+
+            <strong>
+                Ramesh
+            </strong>
+
+        </div>
+
+        <div class="track-info-box">
+
+            <span>
+                Crop
+            </span>
+
+            <strong>
+                Paddy
+            </strong>
+
+        </div>
+
+        <div class="track-info-box">
+
+            <span>
+                Registered Quantity
+            </span>
+
+            <strong>
+                100 q
+            </strong>
+
+        </div>
+
+        <div class="track-info-box">
+
+            <span>
+                Actual Weight
+            </span>
+
+            <strong>
+                99.8 q
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="track-info">
+
+        <div class="track-info-box">
+
+            <span>
+                Procurement Center
+            </span>
+
+            <strong>
+                District Procurement Center
+            </strong>
+
+        </div>
+
+        <div class="track-info-box">
+
+            <span>
+                Center Distance
+            </span>
+
+            <strong>
+                3.2 km
+            </strong>
+
+        </div>
+
+        <div class="track-info-box">
+
+            <span>
+                Expected Next Step
+            </span>
+
+            <strong>
+                Procurement Confirmation
+            </strong>
+
+        </div>
+
+        <div class="track-info-box">
+
+            <span>
+                Payment Status
+            </span>
+
+            <strong>
+                Awaiting Procurement
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- TRACKING HISTORY -->
+
+<div class="card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>
+                Tracking History
+            </h3>
+
+            <p>
+                Every major procurement event is recorded.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+    <table>
+
+        <tr>
+
+            <th>
+                Date
+            </th>
+
+            <th>
+                Stage
+            </th>
+
+            <th>
+                Details
+            </th>
+
+            <th>
+                Status
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                04 Sep 2026
+            </td>
+
+            <td>
+                Quality Check
+            </td>
+
+            <td>
+                Crop quality verification started.
+            </td>
+
+            <td>
+
+                <span class="status orange">
+                    In Progress
+                </span>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                04 Sep 2026
+            </td>
+
+            <td>
+                Weighing
+            </td>
+
+            <td>
+                Actual weight recorded: 99.8 q.
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Completed
+                </span>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                03 Sep 2026
+            </td>
+
+            <td>
+                Center Arrival
+            </td>
+
+            <td>
+                Crop arrived at District Procurement Center.
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Completed
+                </span>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                02 Sep 2026
+            </td>
+
+            <td>
+                Slot Booking
+            </td>
+
+            <td>
+                Procurement slot successfully confirmed.
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Completed
+                </span>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                01 Sep 2026
+            </td>
+
+            <td>
+                Crop Registration
+            </td>
+
+            <td>
+                Paddy — 100 quintals registered.
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Completed
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CENTERS
+===================================================== -->
+
+<section
+    class="page"
+    id="centers">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>
+                🏢 Procurement Centers
+            </h3>
+
+            <p>
+                Find a suitable center and reserve your slot.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="center-grid">
+
+
+        <div class="center-card">
+
+            <h3>
+                District Procurement Center
+            </h3>
+
+            <div class="center-meta">
+
+                📍 3.2 km away<br>
+
+                🌾 Paddy • Maize<br>
+
+                📦 Capacity: 500 q<br>
+
+                🟢 Slots available
+
+            </div>
+
+
+            <button
+                class="action-btn"
+                onclick="bookSlot('District Procurement Center')">
+
+                Book Slot
+
+            </button>
+
+        </div>
+
+
+        <div class="center-card">
+
+            <h3>
+                Regional Procurement Center
+            </h3>
+
+            <div class="center-meta">
+
+                📍 6.8 km away<br>
+
+                🌾 Paddy • Cotton<br>
+
+                📦 Capacity: 350 q<br>
+
+                🟢 Slots available
+
+            </div>
+
+
+            <button
+                class="action-btn"
+                onclick="bookSlot('Regional Procurement Center')">
+
+                Book Slot
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CALCULATOR
+===================================================== -->
+
+<section
+    class="page"
+    id="calculator">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>
+                🧮 MSP Calculator
+            </h3>
+
+            <p>
+                Calculate an indicative estimated amount.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="calc-box">
+
+        <div class="grid-2">
+
+            <div class="form-group">
+
+                <label>
+                    Crop
+                </label>
+
+                <select
+                    id="calcCrop"
+                    onchange="calculateMSP()">
+
+                    <option value="2369">
+                        Paddy — ₹2,369/q
+                    </option>
+
+                    <option value="2585">
+                        Wheat — ₹2,585/q
+                    </option>
+
+                    <option value="7400">
+                        Cotton — ₹7,400/q
+                    </option>
+
+                    <option value="2400">
+                        Maize — ₹2,400/q
+                    </option>
+
+                    <option value="8000">
+                        Red Gram — ₹8,000/q
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Quantity (Quintals)
+                </label>
+
+                <input
+                    id="calcQty"
+                    type="number"
+                    value="100"
+                    oninput="calculateMSP()">
+
+            </div>
+
+        </div>
+
+
+        <div class="calculation">
+
+            <h4>
+                Estimated Calculation
+            </h4>
+
+            <div
+                class="equation"
+                id="equation">
+
+                100 q × ₹2,369
+
+            </div>
+
+            <div
+                class="amount"
+                id="estimatedAmount">
+
+                ₹2,36,900
+
+            </div>
+
+            <small style="color:#7c8781;">
+                Estimated amount
+            </small>
+
+        </div>
+
+
+        <div class="condition">
+
+            ⚠️ <strong>Important:</strong>
+            This is an estimate only. Final amount may vary based on
+            prevailing market price, actual weighed quantity,
+            crop quality/grade and applicable procurement conditions.
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAYMENTS
+===================================================== -->
+
+<section
+    class="page"
+    id="payments">
+
+
+<div class="card">
+
+    <div class="card-header">
+
+        <div>
+
+            <h3>
+                💳 My Payments
+            </h3>
+
+            <p>
+                Manage your bank details and track procurement payments.
+            </p>
+
+        </div>
+
+        <span class="status green">
+            Payment Credited
+        </span>
+
+    </div>
+
+
+    <div class="payment-main">
+
+
+        <!-- PAYMENT -->
+
+        <div class="amount-box">
+
+            <small>
+                Latest Payment
+            </small>
+
+            <h2>
+                ₹2,36,426
+            </h2>
+
+            <p style="font-size:11px;">
+                Procurement ID:
+                <strong>
+                    KRS-2026-00124
+                </strong>
+            </p>
+
+            <p style="font-size:11px;margin-top:6px;">
+                Payment ID:
+                <strong>
+                    PAY-784521
+                </strong>
+            </p>
+
+            <p style="font-size:11px;margin-top:6px;">
+                Date:
+                <strong>
+                    04 Sep 2026
+                </strong>
+            </p>
+
+        </div>
+
+
+        <!-- BANK -->
+
+        <div class="bank-box">
+
+            <h3>
+                🏦 Registered Bank Account
+            </h3>
+
+            <small style="color:var(--muted);font-size:10px;">
+                Your bank details are managed here, not during login.
+            </small>
+
+
+            <div
+                class="bank-number"
+                id="displayBank">
+
+                XXXX XXXX 4521
+
+            </div>
+
+
+            <p style="font-size:11px;">
+
+                IFSC:
+                <strong id="displayIFSC">
+                    XXXX0XXXXXX
+                </strong>
+
+            </p>
+
+
+            <div class="bank-form">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Bank Account Number
+                    </label>
+
+                    <input
+                        id="paymentBank"
+                        type="text"
+                        placeholder="Enter account number">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        IFSC Code
+                    </label>
+
+                    <input
+                        id="paymentIFSC"
+                        type="text"
+                        placeholder="e.g. SBIN0001234">
+
+                </div>
+
+
+                <div class="full">
+
+                    <button
+                        class="primary-btn"
+                        onclick="saveBankDetails()">
+
+                        🔒 Save Bank Details
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <p style="
+                font-size:9px;
+                color:#89938d;
+                margin-top:10px;
+            ">
+
+                🔒 Demo prototype. In a real system,
+                banking information must be encrypted and securely stored.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            Payment History
+        </h3>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+    <table>
+
+        <tr>
+
+            <th>
+                Date
+            </th>
+
+            <th>
+                Procurement ID
+            </th>
+
+            <th>
+                Crop
+            </th>
+
+            <th>
+                Amount
+            </th>
+
+            <th>
+                Status
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                04 Sep 2026
+            </td>
+
+            <td>
+                KRS-2026-00124
+            </td>
+
+            <td>
+                Paddy
+            </td>
+
+            <td>
+                ₹2,36,426
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Credited
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RECEIPT
+===================================================== -->
+
+<section
+    class="page"
+    id="receipt">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            🧾 Digital Receipt
+        </h3>
+
+        <button
+            class="action-btn"
+            onclick="window.print()">
+
+            Print / Save
+
+        </button>
+
+    </div>
+
+
+    <div class="receipt">
+
+        <div class="receipt-head">
+
+            <h2>
+                KrishiSetu
+            </h2>
+
+            <p>
+                Digital Procurement Receipt
+            </p>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Procurement ID
+            </span>
+
+            <strong>
+                KRS-2026-00124
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Farmer
+            </span>
+
+            <strong>
+                Ramesh
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Crop
+            </span>
+
+            <strong>
+                Paddy
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Registered Quantity
+            </span>
+
+            <strong>
+                100 q
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Actual Weight
+            </span>
+
+            <strong>
+                99.8 q
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Quality
+            </span>
+
+            <strong>
+                A Grade
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Indicative MSP
+            </span>
+
+            <strong>
+                ₹2,369/q
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Final Amount
+            </span>
+
+            <strong>
+                ₹2,36,426
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Payment ID
+            </span>
+
+            <strong>
+                PAY-784521
+            </strong>
+
+        </div>
+
+
+        <div class="receipt-row">
+
+            <span>
+                Payment Status
+            </span>
+
+            <strong style="color:var(--green)">
+                Credited
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NOTIFICATIONS
+===================================================== -->
+
+<section
+    class="page"
+    id="notifications">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            🔔 Notifications
+        </h3>
+
+    </div>
+
+
+    <div class="card">
+
+        <strong>
+            ◉ Quality Verification Started
+        </strong>
+
+        <p style="
+            font-size:11px;
+            color:var(--muted);
+            margin-top:5px;
+        ">
+
+            Your Paddy quality verification is currently in progress.
+
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <strong>
+            ⚖️ Weighing Completed
+        </strong>
+
+        <p style="
+            font-size:11px;
+            color:var(--muted);
+            margin-top:5px;
+        ">
+
+            Actual crop weight recorded as 99.8 quintals.
+
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <strong>
+            📍 Crop Reached Center
+        </strong>
+
+        <p style="
+            font-size:11px;
+            color:var(--muted);
+            margin-top:5px;
+        ">
+
+            Your crop reached the District Procurement Center.
+
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CENTER DASHBOARD
+===================================================== -->
+
+<section
+    class="page"
+    id="centerDashboard">
+
+<div class="welcome">
+
+    <h2>
+        Procurement Center Dashboard
+    </h2>
+
+    <p>
+        Manage farmer requests, crop verification and procurement.
+    </p>
+
+</div>
+
+
+<div class="center-dashboard-grid">
+
+    <div class="mini-card">
+
+        <span>
+            Today's Bookings
+        </span>
+
+        <h2>
+            24
+        </h2>
+
+    </div>
+
+
+    <div class="mini-card">
+
+        <span>
+            Pending Requests
+        </span>
+
+        <h2>
+            8
+        </h2>
+
+    </div>
+
+
+    <div class="mini-card">
+
+        <span>
+            Capacity Used
+        </span>
+
+        <h2>
+            376 q
+        </h2>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REQUESTS
+===================================================== -->
+
+<section
+    class="page"
+    id="requests">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            📋 Farmer Requests
+        </h3>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+    <table>
+
+        <tr>
+
+            <th>
+                Farmer
+            </th>
+
+            <th>
+                Crop
+            </th>
+
+            <th>
+                Quantity
+            </th>
+
+            <th>
+                Location
+            </th>
+
+            <th>
+                Status
+            </th>
+
+            <th>
+                Action
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Ramesh
+            </td>
+
+            <td>
+                Paddy
+            </td>
+
+            <td>
+                100 q
+            </td>
+
+            <td>
+                Telangana
+            </td>
+
+            <td>
+
+                <span class="status orange">
+                    Pending
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                    class="action-btn"
+                    onclick="acceptRequest(this)">
+
+                    Accept
+
+                </button>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Suresh
+            </td>
+
+            <td>
+                Maize
+            </td>
+
+            <td>
+                80 q
+            </td>
+
+            <td>
+                Telangana
+            </td>
+
+            <td>
+
+                <span class="status orange">
+                    Pending
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                    class="action-btn"
+                    onclick="acceptRequest(this)">
+
+                    Accept
+
+                </button>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VERIFICATION
+===================================================== -->
+
+<section
+    class="page"
+    id="verification">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            ⚖️ Procurement Verification
+        </h3>
+
+    </div>
+
+
+    <div class="grid-2">
+
+        <div class="form-group">
+
+            <label>
+                Procurement ID
+            </label>
+
+            <input
+                value="KRS-2026-00124">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Actual Weight
+            </label>
+
+            <input
+                id="actualWeight"
+                type="number"
+                value="99.8">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Quality / Grade
+            </label>
+
+            <select id="quality">
+
+                <option>
+                    A Grade
+                </option>
+
+                <option>
+                    B Grade
+                </option>
+
+                <option>
+                    C Grade
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="primary-btn"
+        onclick="confirmProcurement()">
+
+        Confirm Procurement
+
+    </button>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CENTER PAYMENTS
+===================================================== -->
+
+<section
+    class="page"
+    id="centerPayments">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            💳 Payment Processing
+        </h3>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+    <table>
+
+        <tr>
+
+            <th>
+                Farmer
+            </th>
+
+            <th>
+                Procurement ID
+            </th>
+
+            <th>
+                Amount
+            </th>
+
+            <th>
+                Status
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Ramesh
+            </td>
+
+            <td>
+                KRS-2026-00124
+            </td>
+
+            <td>
+                ₹2,36,426
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Credited
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CENTER REPORTS
+===================================================== -->
+
+<section
+    class="page"
+    id="reports">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            📊 Center Reports
+        </h3>
+
+    </div>
+
+
+    <div class="grid-2">
+
+        <div class="calc-box">
+
+            <h3>
+                Paddy Procurement
+            </h3>
+
+            <h1 style="
+                color:var(--green);
+                margin-top:10px;
+            ">
+                2,430 q
+            </h1>
+
+            <p style="
+                font-size:11px;
+                color:var(--muted);
+            ">
+                Total processed
+            </p>
+
+        </div>
+
+
+        <div class="calc-box">
+
+            <h3>
+                Farmers Served
+            </h3>
+
+            <h1 style="
+                color:var(--green);
+                margin-top:10px;
+            ">
+                428
+            </h1>
+
+            <p style="
+                font-size:11px;
+                color:var(--muted);
+            ">
+                This procurement cycle
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN DASHBOARD
+===================================================== -->
+
+<section
+    class="page"
+    id="adminDashboard">
+
+<div class="welcome">
+
+    <h2>
+        Admin Control Dashboard
+    </h2>
+
+    <p>
+        Monitor farmers, procurement centers, crop movement and payments.
+    </p>
+
+</div>
+
+
+<div class="stats">
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <span>
+                Total Farmers
+            </span>
+
+            <div class="stat-icon">
+                👨‍🌾
+            </div>
+
+        </div>
+
+        <h3>
+            8,420
+        </h3>
+
+        <p>
+            Registered
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <span>
+                Centers
+            </span>
+
+            <div class="stat-icon">
+                🏢
+            </div>
+
+        </div>
+
+        <h3>
+            126
+        </h3>
+
+        <p>
+            Active
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <span>
+                Procurement
+            </span>
+
+            <div class="stat-icon">
+                🌾
+            </div>
+
+        </div>
+
+        <h3>
+            48,230 q
+        </h3>
+
+        <p>
+            Total
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-top">
+
+            <span>
+                Payments
+            </span>
+
+            <div class="stat-icon">
+                ₹
+            </div>
+
+        </div>
+
+        <h3>
+            ₹11.2 Cr
+        </h3>
+
+        <p>
+            Processed
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            📈 Procurement Overview
+        </h3>
+
+    </div>
+
+
+    <div class="msp-grid">
+
+        <div class="msp-card">
+
+            <span class="crop">
+                Paddy
+            </span>
+
+            <strong>
+                22,450 q
+            </strong>
+
+            <small>
+                Procured
+            </small>
+
+        </div>
+
+
+        <div class="msp-card">
+
+            <span class="crop">
+                Wheat
+            </span>
+
+            <strong>
+                10,200 q
+            </strong>
+
+            <small>
+                Procured
+            </small>
+
+        </div>
+
+
+        <div class="msp-card">
+
+            <span class="crop">
+                Cotton
+            </span>
+
+            <strong>
+                8,400 q
+            </strong>
+
+            <small>
+                Procured
+            </small>
+
+        </div>
+
+
+        <div class="msp-card">
+
+            <span class="crop">
+                Maize
+            </span>
+
+            <strong>
+                7,180 q
+            </strong>
+
+            <small>
+                Procured
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN FARMERS
+===================================================== -->
+
+<section
+    class="page"
+    id="farmers">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            👨‍🌾 Registered Farmers
+        </h3>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+    <table>
+
+        <tr>
+
+            <th>
+                Farmer
+            </th>
+
+            <th>
+                Location
+            </th>
+
+            <th>
+                Crop
+            </th>
+
+            <th>
+                Quantity
+            </th>
+
+            <th>
+                Status
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Ramesh
+            </td>
+
+            <td>
+                Telangana
+            </td>
+
+            <td>
+                Paddy
+            </td>
+
+            <td>
+                100 q
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Active
+                </span>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Suresh
+            </td>
+
+            <td>
+                Telangana
+            </td>
+
+            <td>
+                Maize
+            </td>
+
+            <td>
+                80 q
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Active
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN CENTERS
+===================================================== -->
+
+<section
+    class="page"
+    id="adminCenters">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            🏢 Procurement Centers
+        </h3>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+    <table>
+
+        <tr>
+
+            <th>
+                Center
+            </th>
+
+            <th>
+                District
+            </th>
+
+            <th>
+                Capacity
+            </th>
+
+            <th>
+                Utilization
+            </th>
+
+            <th>
+                Status
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                District Procurement Center
+            </td>
+
+            <td>
+                Telangana
+            </td>
+
+            <td>
+                500 q
+            </td>
+
+            <td>
+                72%
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Active
+                </span>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Regional Procurement Center
+            </td>
+
+            <td>
+                Telangana
+            </td>
+
+            <td>
+                350 q
+            </td>
+
+            <td>
+                61%
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Active
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN PAYMENTS
+===================================================== -->
+
+<section
+    class="page"
+    id="adminPayments">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            💳 Payment Monitoring
+        </h3>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+    <table>
+
+        <tr>
+
+            <th>
+                Farmer
+            </th>
+
+            <th>
+                Procurement ID
+            </th>
+
+            <th>
+                Amount
+            </th>
+
+            <th>
+                Status
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                Ramesh
+            </td>
+
+            <td>
+                KRS-2026-00124
+            </td>
+
+            <td>
+                ₹2,36,426
+            </td>
+
+            <td>
+
+                <span class="status green">
+                    Credited
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMPLAINTS
+===================================================== -->
+
+<section
+    class="page"
+    id="complaints">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            ⚠️ Farmer Complaints
+        </h3>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+    <table>
+
+        <tr>
+
+            <th>
+                Complaint ID
+            </th>
+
+            <th>
+                Farmer
+            </th>
+
+            <th>
+                Issue
+            </th>
+
+            <th>
+                Status
+            </th>
+
+        </tr>
+
+
+        <tr>
+
+            <td>
+                CMP-1024
+            </td>
+
+            <td>
+                Ramesh
+            </td>
+
+            <td>
+                Payment clarification
+            </td>
+
+            <td>
+
+                <span class="status orange">
+                    Under Review
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN REPORTS
+===================================================== -->
+
+<section
+    class="page"
+    id="adminReports">
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h3>
+            📊 Reports & Analytics
+        </h3>
+
+    </div>
+
+
+    <div class="grid-2">
+
+        <div class="calc-box">
+
+            <h3>
+                Crop-wise Procurement
+            </h3>
+
+            <p style="margin-top:14px;">
+                Paddy — 46%
+            </p>
+
+            <p>
+                Wheat — 21%
+            </p>
+
+            <p>
+                Cotton — 18%
+            </p>
+
+            <p>
+                Maize — 15%
+            </p>
+
+        </div>
+
+
+        <div class="calc-box">
+
+            <h3>
+                Capacity Utilization
+            </h3>
+
+            <h1 style="
+                color:var(--green);
+                margin-top:12px;
+            ">
+                68%
+            </h1>
+
+            <p style="
+                font-size:11px;
+                color:var(--muted);
+            ">
+                Overall center utilization
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+
+<!-- =====================================================
+     KRISHI AI
+===================================================== -->
+
+<button
+    class="chatbot-button"
+    onclick="toggleChat()"
+    title="Krishi AI Assistant">
+
+    🤖
+
+</button>
+
+
+<div
+    class="chatbot-window"
+    id="chatbotWindow">
+
+
+    <div class="chatbot-header">
+
+        <div class="bot-info">
+
+            <div class="bot-avatar">
+                🌱
+            </div>
+
+            <div>
+
+                <strong>
+                    Krishi AI
+                </strong>
+
+                <small>
+                    Farmer Assistant
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="close-chat"
+            onclick="toggleChat()">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div class="chat-language">
+
+        <select
+            id="chatLanguage"
+            onchange="changeChatLanguage()">
+
+            <option value="English">
+                English
+            </option>
+
+            <option value="Telugu">
+                తెలుగు
+            </option>
+
+            <option value="Hindi">
+                हिंदी
+            </option>
+
+            <option value="Tamil">
+                தமிழ்
+            </option>
+
+            <option value="Bhojpuri">
+                भोजपुरी
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div
+        class="chat-messages"
+        id="chatMessages">
+
+        <div class="chat-message bot-message">
+
+            👋 Hello! I can help with crop registration,
+            tracking, MSP, procurement centers, payments and receipts.
+
+        </div>
+
+    </div>
+
+
+    <div class="chat-input">
+
+        <input
+            id="chatInput"
+            placeholder="Ask Krishi AI..."
+            onkeydown="if(event.key==='Enter') sendChat()">
+
+
+        <button
+            class="chat-send"
+            onclick="sendChat()">
+
+            ➤
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+let currentRole="farmer";
+
+let currentChatLanguage="English";
+
+
+/* =====================================================
+   ROLE
+===================================================== */
+
+function selectRole(role,button){
+
+    currentRole=role;
+
+
+    document
+        .querySelectorAll(".role-tabs button")
+        .forEach(btn=>{
+            btn.classList.remove("active");
+        });
+
+
+    button.classList.add("active");
+
+
+    const details=
+        document.getElementById("farmerLoginDetails");
+
+
+    if(role==="farmer"){
+
+        details.style.display="block";
+
+    }else{
+
+        details.style.display="none";
+
+    }
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function login(){
+
+    document.getElementById("loginPage").style.display="none";
+
+    document.getElementById("app").style.display="block";
+
+
+    document.getElementById("farmerMenu").style.display="none";
+
+    document.getElementById("centerMenu").style.display="none";
+
+    document.getElementById("adminMenu").style.display="none";
+
+
+    if(currentRole==="farmer"){
+
+        document.getElementById("farmerMenu").style.display="block";
+
+        document.getElementById("userName").textContent="Ramesh";
+
+        document.getElementById("avatar").textContent="R";
+
+        showPage("farmerDashboard");
+
+    }
+
+
+    else if(currentRole==="center"){
+
+        document.getElementById("centerMenu").style.display="block";
+
+        document.getElementById("userName").textContent=
+            "Procurement Center";
+
+        document.getElementById("avatar").textContent="P";
+
+        showPage("centerDashboard");
+
+    }
+
+
+    else{
+
+        document.getElementById("adminMenu").style.display="block";
+
+        document.getElementById("userName").textContent="Admin";
+
+        document.getElementById("avatar").textContent="A";
+
+        showPage("adminDashboard");
+
+    }
+
+}
+
+
+/* =====================================================
+   FACE ID
+===================================================== */
+
+function faceLogin(){
+
+    alert("🔐 Verifying Face ID...");
+
+
+    setTimeout(()=>{
+
+        alert(
+            "✓ Face verification successful!\n\n"+
+            "Demo authentication completed."
+        );
+
+    },1000);
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+    document.getElementById("app").style.display="none";
+
+    document.getElementById("loginPage").style.display="flex";
+
+    document.getElementById("chatbotWindow").style.display="none";
+
+}
+
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+
+function showPage(pageId,button=null){
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page=>{
+            page.classList.remove("active");
+        });
+
+
+    const page=
+        document.getElementById(pageId);
+
+
+    if(page){
+
+        page.classList.add("active");
+
+    }
+
+
+    document
+        .querySelectorAll(".menu button")
+        .forEach(btn=>{
+            btn.classList.remove("active");
+        });
+
+
+    if(button){
+
+        button.classList.add("active");
+
+    }
+
+
+    const titles={
+
+        farmerDashboard:
+            "Farmer Dashboard",
+
+        registerCrop:
+            "Register Crop",
+
+        cropTracking:
+            "Track My Crop",
+
+        centers:
+            "Procurement Centers",
+
+        calculator:
+            "MSP Calculator",
+
+        payments:
+            "My Payments",
+
+        receipt:
+            "Digital Receipt",
+
+        notifications:
+            "Notifications",
+
+        centerDashboard:
+            "Procurement Center Dashboard",
+
+        requests:
+            "Farmer Requests",
+
+        verification:
+            "Procurement Verification",
+
+        centerPayments:
+            "Center Payments",
+
+        reports:
+            "Center Reports",
+
+        adminDashboard:
+            "Admin Dashboard",
+
+        farmers:
+            "Registered Farmers",
+
+        adminCenters:
+            "Procurement Centers",
+
+        adminPayments:
+            "Payment Monitoring",
+
+        complaints:
+            "Complaints",
+
+        adminReports:
+            "Reports & Analytics"
+
+    };
+
+
+    document.getElementById("pageTitle").textContent=
+        titles[pageId] || "KrishiSetu";
+
+}
+
+
+/* =====================================================
+   REGISTER CROP
+===================================================== */
+
+function registerCrop(){
+
+    const crop=
+        document.getElementById("registerCropType").value;
+
+
+    const quantity=
+        document.getElementById("registerQty").value;
+
+
+    alert(
+        "✓ Crop Registered Successfully!\n\n"+
+        "Crop: "+crop+
+        "\nQuantity: "+quantity+" q"+
+        "\nStatus: Registered"+
+        "\n\nYou can now track your crop."
+    );
+
+
+    showPage("cropTracking");
+
+}
+
+
+/* =====================================================
+   BOOK SLOT
+===================================================== */
+
+function bookSlot(center){
+
+    alert(
+        "✓ Slot Booked Successfully!\n\n"+
+        "Center: "+center+
+        "\nDate: 06 Sep 2026"+
+        "\nStatus: Confirmed"
+    );
+
+}
+
+
+/* =====================================================
+   MSP
+===================================================== */
+
+function calculateMSP(){
+
+    const msp=
+        Number(
+            document.getElementById("calcCrop").value
+        );
+
+
+    const qty=
+        Number(
+            document.getElementById("calcQty").value
+        ) || 0;
+
+
+    const total=
+        msp*qty;
+
+
+    document.getElementById("equation").textContent=
+        qty+" q × ₹"+
+        msp.toLocaleString("en-IN");
+
+
+    document.getElementById("estimatedAmount").textContent=
+        "₹"+
+        total.toLocaleString("en-IN");
+
+}
+
+
+/* =====================================================
+   BANK DETAILS
+===================================================== */
+
+function saveBankDetails(){
+
+    const account=
+        document.getElementById("paymentBank").value.trim();
+
+
+    const ifsc=
+        document.getElementById("paymentIFSC").value.trim();
+
+
+    if(!account || !ifsc){
+
+        alert(
+            "Please enter both Bank Account Number and IFSC Code."
+        );
+
+        return;
+
+    }
+
+
+    const lastFour=
+        account.slice(-4);
+
+
+    document.getElementById("displayBank").textContent=
+        "XXXX XXXX "+lastFour;
+
+
+    document.getElementById("displayIFSC").textContent=
+        ifsc.slice(0,4)+"XXXXXXX";
+
+
+    alert(
+        "✓ Bank Details Saved Successfully!\n\n"+
+        "Account ending: "+lastFour+
+        "\nIFSC: "+ifsc+
+        "\n\nDemo prototype: details are stored only in this browser session."
+    );
+
+}
+
+
+/* =====================================================
+   CENTER
+===================================================== */
+
+function acceptRequest(button){
+
+    const row=
+        button.closest("tr");
+
+
+    const status=
+        row.querySelector(".status");
+
+
+    status.textContent=
+        "Accepted";
+
+
+    status.className=
+        "status green";
+
+
+    button.textContent=
+        "Accepted";
+
+
+    button.disabled=true;
+
+}
+
+
+/* =====================================================
+   PROCUREMENT
+===================================================== */
+
+function confirmProcurement(){
+
+    const weight=
+        document.getElementById("actualWeight").value;
+
+
+    const grade=
+        document.getElementById("quality").value;
+
+
+    const id=
+        "KRS-2026-"+
+        Math.floor(
+            10000+
+            Math.random()*90000
+        );
+
+
+    alert(
+        "✓ Procurement Confirmed!\n\n"+
+        "Procurement ID: "+id+
+        "\nActual Weight: "+weight+" q"+
+        "\nQuality: "+grade+
+        "\n\nPayment processing initiated."
+    );
+
+}
+
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+function toggleChat(){
+
+    const chat=
+        document.getElementById("chatbotWindow");
+
+
+    if(chat.style.display==="block"){
+
+        chat.style.display="none";
+
+    }else{
+
+        chat.style.display="block";
+
+        document
+            .getElementById("chatInput")
+            .focus();
+
+    }
+
+}
+
+
+/* LANGUAGE */
+
+function changeChatLanguage(){
+
+    currentChatLanguage=
+        document.getElementById("chatLanguage").value;
+
+
+    const greetings={
+
+        English:
+        "👋 Hello! I can help with crop tracking, MSP, registration, procurement centers, payments and receipts.",
+
+        Telugu:
+        "👋 నమస్కారం! పంట ట్రాకింగ్, MSP, పంట నమోదు, కొనుగోలు కేంద్రాలు మరియు చెల్లింపుల గురించి నేను సహాయం చేయగలను.",
+
+        Hindi:
+        "👋 नमस्ते! मैं फसल ट्रैकिंग, MSP, पंजीकरण, खरीद केंद्र और भुगतान में आपकी मदद कर सकता हूं।",
+
+        Tamil:
+        "👋 வணக்கம்! பயிர் கண்காணிப்பு, MSP, பதிவு, கொள்முதல் மையங்கள் மற்றும் பணம் பற்றி நான் உதவ முடியும்.",
+
+        Bhojpuri:
+        "👋 प्रणाम! हम फसल ट्रैकिंग, MSP, रजिस्ट्रेशन, खरीद केंद्र आ भुगतान में मदद कर सकत बानी।"
+
+    };
+
+
+    addChatMessage(
+        greetings[currentChatLanguage],
+        "bot"
+    );
+
+}
+
+
+/* ADD MESSAGE */
+
+function addChatMessage(text,type){
+
+    const messages=
+        document.getElementById("chatMessages");
+
+
+    const div=
+        document.createElement("div");
+
+
+    div.className=
+        "chat-message "+
+        (
+            type==="user"
+            ? "user-message"
+            : "bot-message"
+        );
+
+
+    div.textContent=text;
+
+
+    messages.appendChild(div);
+
+
+    messages.scrollTop=
+        messages.scrollHeight;
+
+}
+
+
+/* BOT REPLY */
+
+function getBotReply(question){
+
+    const q=
+        question.toLowerCase();
+
+
+    /* TRACKING */
+
+    if(
+        q.includes("track") ||
+        q.includes("tracking") ||
+        q.includes("status") ||
+        q.includes("where") ||
+        q.includes("ट्रैक") ||
+        q.includes("స్థితి") ||
+        q.includes("கண்காண")
+    ){
+
+        const replies={
+
+            English:
+            "Open 'Track My Crop' to see your procurement journey: Registered → Slot Booked → At Center → Weighed → Quality Check → Procurement → Payment.",
+
+            Telugu:
+            "'Track My Crop' ఓపెన్ చేసి మీ పంట ప్రయాణాన్ని చూడండి: నమోదు → స్లాట్ → కేంద్రానికి చేరింది → బరువు → నాణ్యత తనిఖీ → కొనుగోలు → చెల్లింపు.",
+
+            Hindi:
+            "'Track My Crop' खोलकर अपनी फसल की स्थिति देखें: पंजीकरण → स्लॉट → केंद्र → वजन → गुणवत्ता जांच → खरीद → भुगतान।",
+
+            Tamil:
+            "'Track My Crop' பகுதியில் உங்கள் பயிரின் நிலையை பார்க்கலாம்: பதிவு → Slot → மையம் → எடை → தர சோதனை → கொள்முதல் → பணம்.",
+
+            Bhojpuri:
+            "'Track My Crop' खोल के फसल के स्थिति देखीं: रजिस्ट्रेशन → स्लॉट → केंद्र → वजन → क्वालिटी → खरीद → भुगतान।"
+
+        };
+
+
+        return replies[currentChatLanguage];
+
+    }
+
+
+    /* MSP */
+
+    if(
+        q.includes("msp") ||
+        q.includes("price") ||
+        q.includes("भाव") ||
+        q.includes("ధర") ||
+        q.includes("விலை")
+    ){
+
+        const replies={
+
+            English:
+            "MSP is used as an indicative price. Estimated amount = Quantity × MSP. Final amount may vary based on actual weight, quality, market price and applicable procurement conditions.",
+
+            Telugu:
+            "MSP ఆధారంగా అంచనా మొత్తం లెక్కించవచ్చు. తుది మొత్తం అసలు బరువు, నాణ్యత, మార్కెట్ ధర మరియు కొనుగోలు నిబంధనలపై ఆధారపడి మారవచ్చు.",
+
+            Hindi:
+            "MSP से अनुमानित राशि निकाली जाती है। अंतिम राशि वास्तविक वजन, गुणवत्ता, बाजार मूल्य और खरीद नियमों के अनुसार बदल सकती है।",
+
+            Tamil:
+            "MSP மூலம் மதிப்பிடப்பட்ட தொகையை கணக்கிடலாம். உண்மையான எடை, தரம் மற்றும் சந்தை விலையின் அடிப்படையில் இறுதி தொகை மாறலாம்.",
+
+            Bhojpuri:
+            "MSP से अनुमानित रकम निकालल जाला। अंतिम रकम असली वजन, गुणवत्ता, बाजार भाव आ खरीद नियम के हिसाब से बदल सकेला."
+
+        };
+
+
+        return replies[currentChatLanguage];
+
+    }
+
+
+    /* REGISTER */
+
+    if(
+        q.includes("register") ||
+        q.includes("crop") ||
+        q.includes("पंजी") ||
+        q.includes("फसल") ||
+        q.includes("పంట") ||
+        q.includes("பயிர்")
+    ){
+
+        const replies={
+
+            English:
+            "Open Register Crop, select your crop, enter quantity and location, then submit the form.",
+
+            Telugu:
+            "Register Crop ఓపెన్ చేసి పంట, పరిమాణం మరియు ప్రాంతాన్ని నమోదు చేసి submit చేయండి.",
+
+            Hindi:
+            "Register Crop खोलें, फसल, मात्रा और स्थान दर्ज करें और फॉर्म सबमिट करें।",
+
+            Tamil:
+            "Register Crop திறந்து பயிர், அளவு மற்றும் இடத்தை பதிவு செய்து சமர்ப்பிக்கவும்.",
+
+            Bhojpuri:
+            "Register Crop खोल के फसल, मात्रा आ जगह भर के submit करीं."
+
+        };
+
+
+        return replies[currentChatLanguage];
+
+    }
+
+
+    /* CENTER */
+
+    if(
+        q.includes("center") ||
+        q.includes("centre") ||
+        q.includes("केंद्र") ||
+        q.includes("కేంద్ర") ||
+        q.includes("மையம்")
+    ){
+
+        const replies={
+
+            English:
+            "Open Procurement Centers to see nearby centers, supported crops, capacity and available slots.",
+
+            Telugu:
+            "Procurement Centers ఓపెన్ చేస్తే దగ్గరలోని కేంద్రాలు, పంటలు, సామర్థ్యం మరియు slots చూడవచ్చు.",
+
+            Hindi:
+            "Procurement Centers में नजदीकी केंद्र, फसल, क्षमता और उपलब्ध स्लॉट देख सकते हैं।",
+
+            Tamil:
+            "Procurement Centers பகுதியில் அருகிலுள்ள மையங்கள், பயிர்கள், திறன் மற்றும் slots பார்க்கலாம்.",
+
+            Bhojpuri:
+            "Procurement Centers खोल के नजदीकी केंद्र, फसल, capacity आ slots देख सकत बानी."
+
+        };
+
+
+        return replies[currentChatLanguage];
+
+    }
+
+
+    /* PAYMENT */
+
+    if(
+        q.includes("payment") ||
+        q.includes("bank") ||
+        q.includes("पैसा") ||
+        q.includes("भुगतान") ||
+        q.includes("చెల్లింపు") ||
+        q.includes("பணம்")
+    ){
+
+        const replies={
+
+            English:
+            "Open My Payments to enter or update your bank account and IFSC details and view your procurement payments.",
+
+            Telugu:
+            "My Payments లో మీ Bank Account మరియు IFSC వివరాలను నమోదు లేదా update చేసి payments చూడవచ్చు.",
+
+            Hindi:
+            "My Payments में बैंक अकाउंट और IFSC दर्ज या अपडेट करके अपने भुगतान देख सकते हैं।",
+
+            Tamil:
+            "My Payments பகுதியில் Bank Account மற்றும் IFSC விவரங்களை பதிவு அல்லது update செய்து பணத்தை பார்க்கலாம்.",
+
+            Bhojpuri:
+            "My Payments में Bank Account आ IFSC डाल के update करीं आ भुगतान देखीं."
+
+        };
+
+
+        return replies[currentChatLanguage];
+
+    }
+
+
+    /* RECEIPT */
+
+    if(
+        q.includes("receipt") ||
+        q.includes("रसीद") ||
+        q.includes("రసీదు") ||
+        q.includes("ரசீது")
+    ){
+
+        const replies={
+
+            English:
+            "Open Digital Receipt to view or print your procurement receipt.",
+
+            Telugu:
+            "Digital Receipt ఓపెన్ చేసి procurement receipt చూడవచ్చు లేదా print చేసుకోవచ్చు.",
+
+            Hindi:
+            "Digital Receipt खोलकर अपनी खरीद रसीद देख या प्रिंट कर सकते हैं।",
+
+            Tamil:
+            "Digital Receipt பகுதியில் உங்கள் கொள்முதல் ரசீதை பார்க்க அல்லது print செய்யலாம்.",
+
+            Bhojpuri:
+            "Digital Receipt खोल के खरीद के रसीद देखीं या print करीं."
+
+        };
+
+
+        return replies[currentChatLanguage];
+
+    }
+
+
+    /* GREETING */
+
+    if(
+        q.includes("hello") ||
+        q.includes("hi") ||
+        q.includes("namaste") ||
+        q.includes("नमस्ते")
+    ){
+
+        const replies={
+
+            English:
+            "Hello! 🌱 How can I help you today?",
+
+            Telugu:
+            "నమస్కారం! 🌱 ఈరోజు మీకు ఎలా సహాయం చేయగలను?",
+
+            Hindi:
+            "नमस्ते! 🌱 आज मैं आपकी कैसे मदद कर सकता हूं?",
+
+            Tamil:
+            "வணக்கம்! 🌱 இன்று நான் உங்களுக்கு எப்படி உதவலாம்?",
+
+            Bhojpuri:
+            "प्रणाम! 🌱 आज हम रउरा के कइसे मदद करीं?"
+
+        };
+
+
+        return replies[currentChatLanguage];
+
+    }
+
+
+    const defaultReplies={
+
+        English:
+        "I can help with crop tracking, MSP, registration, procurement centers, payments and digital receipts.",
+
+        Telugu:
+        "నేను పంట ట్రాకింగ్, MSP, పంట నమోదు, కొనుగోలు కేంద్రాలు, చెల్లింపులు మరియు డిజిటల్ రసీదుల గురించి సహాయం చేయగలను.",
+
+        Hindi:
+        "मैं फसल ट्रैकिंग, MSP, पंजीकरण, खरीद केंद्र, भुगतान और डिजिटल रसीद के बारे में मदद कर सकता हूं।",
+
+        Tamil:
+        "பயிர் கண்காணிப்பு, MSP, பதிவு, கொள்முதல் மையங்கள், பணம் மற்றும் டிஜிட்டல் ரசீது பற்றி நான் உதவ முடியும்.",
+
+        Bhojpuri:
+        "हम फसल ट्रैकिंग, MSP, रजिस्ट्रेशन, खरीद केंद्र, भुगतान आ डिजिटल रसीद के बारे में मदद कर सकत बानी."
+
+    };
+
+
+    return defaultReplies[currentChatLanguage];
+
+}
+
+
+/* SEND */
+
+function sendChat(){
+
+    const input=
+        document.getElementById("chatInput");
+
+
+    const question=
+        input.value.trim();
+
+
+    if(!question)
+        return;
+
+
+    addChatMessage(
+        question,
+        "user"
+    );
+
+
+    input.value="";
+
+
+    setTimeout(()=>{
+
+        addChatMessage(
+            getBotReply(question),
+            "bot"
+        );
+
+    },400);
+
+}
+
+
+/* START */
+
+calculateMSP();
+
+</script>
+
+</body>
+</html>
